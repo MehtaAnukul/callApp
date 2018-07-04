@@ -56,10 +56,12 @@ public class UserModelArrayList {
         System.out.println("Enter the index:");
         index = s.nextInt();
         System.out.println("");
-        System.out.println("The details of"  + userModelArrayList.get(index).getName() +" "+ "is");
+        System.out.println("The details of" + userModelArrayList.get(index).getName() + " " + "is");
         System.out.println("Age:" + userModelArrayList.get(index).getAge() + " | "
-                + "Birth_date:" + userModelArrayList.get(index).getBirthdate() + " | "
-                + "Mobile_no:" + userModelArrayList.get(index).getMultipleMobileNo().size());
+                + "Birth_date:" + userModelArrayList.get(index).getBirthdate() + " | ");
+        for (int i = 0; i < userModelArrayList.get(index).getMultipleMobileNo().size(); i++) {
+            System.out.println("MobileNo:" +userModelArrayList.get(index).getMultipleMobileNo());
+        }
 
     }
 
@@ -105,7 +107,6 @@ public class UserModelArrayList {
         update(index);
         System.out.println("Update successfully");
 
-
         //userModelArrayList.set(index, new UserModel());
 
     }
@@ -115,6 +116,7 @@ public class UserModelArrayList {
         final int age;
         final String birth_date;
         final long mobile_no;
+        final ArrayList<Long> mobileLongArrayList;
 
         System.out.println("");
         System.out.println("Enter your Name:");
@@ -123,10 +125,19 @@ public class UserModelArrayList {
         age = s.nextInt();
         System.out.println("Enter the Birth_Date:");
         birth_date = s.next();
-        System.out.println("Enter the Mobile_no:");
-        mobile_no = s.nextLong();
+//        System.out.println("Enter the Mobile_no:");
+//        mobile_no = s.nextLong();
 
-//        userModelArrayList.set(i, new UserModel(name, age, birth_date, mobile_no));
+        // userModelArrayList.set(i, new UserModel(name, age, birth_date, mobile_no));
+        UserModel userModel = new UserModel();
+        userModel.setName(name);
+        userModel.setAge(age);
+        userModel.setBirthdate(birth_date);
+
+        mobileLongArrayList = new ArrayList<>();
+        mobileno(mobileLongArrayList, userModel, true, i);
+
+
         choice();
 
 
@@ -134,12 +145,15 @@ public class UserModelArrayList {
 
     private void allUserDetails() {
         System.out.println("");
+        System.out.println("");
         for (int i = 0; i < userModelArrayList.size(); i++) {
             System.out.println("Name:" + userModelArrayList.get(i).getName() + " | "
                     + "Age:" + userModelArrayList.get(i).getAge() + " | "
                     + "Birthdate:" + userModelArrayList.get(i).getBirthdate() + " | "
-                    + "Mobile_no:" + userModelArrayList.get(i).getMultipleMobileNo().size());
+                    + "MobileNo:" + userModelArrayList.get(i).getMultipleMobileNo());
+
         }
+
     }
 
     private void insertUserdeteils() {
@@ -162,30 +176,36 @@ public class UserModelArrayList {
         userModel.setBirthdate(birthDate);
 
 
-        mobileno(multipleMobileNo, userModel);
+        mobileno(multipleMobileNo, userModel, false, 1);
 
 
     }
 
-    private void mobileno(ArrayList<Long> m, UserModel userModel) {
+    private void mobileno(ArrayList<Long> m, UserModel userModel, boolean tf, int i) {
         System.out.println("Enter Mobile Number");
         m.add(s.nextLong());
-        addMoreNumber(m, userModel);
+        addMoreNumber(m, userModel, tf, i);
     }
 
-    private void addMoreNumber(ArrayList<Long> m, UserModel userModel) {
+    private void addMoreNumber(ArrayList<Long> m, UserModel userModel, boolean tf, int i) {
 
         String choice;
         System.out.println("Press Y for Add or N for No");
         choice = s.next();
 
         if (choice.equals("Y")) {
+
             System.out.println("Enter Your Number");
             m.add(s.nextLong());
-            addMoreNumber(m, userModel);
+            addMoreNumber(m, userModel, tf, i);
         } else {
-            userModel.setMultipleMobileNo(m);
-            userModelArrayList.add(userModel);
+            if (tf) {
+                userModel.setMultipleMobileNo(m);
+                userModelArrayList.set(i, userModel);
+            } else {
+                userModel.setMultipleMobileNo(m);
+                userModelArrayList.add(userModel);
+            }
             choice();
         }
 
