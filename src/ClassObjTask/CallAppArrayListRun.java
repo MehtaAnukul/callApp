@@ -1,4 +1,4 @@
-package ClassObj;
+package ClassObjTask;
 
 import java.util.ArrayList;
 
