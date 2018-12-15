@@ -127,7 +127,7 @@ public class CallAppArrayList {
     private void perticularUserOutcomingCall() {
         int index;
         for (int i = 0; i < callAppModelArrayList.size(); i++) {
-            System.out.println(i + 1 + "." + callAppModelArrayList.get(i).getName());
+            System.out.println(i  + "." + callAppModelArrayList.get(i).getName());
         }
         System.out.println("Enter the Index");
         index = s.nextInt();
@@ -138,7 +138,8 @@ public class CallAppArrayList {
 
     private void allOutcomingcall() {
         for (int i = 0; i < callAppModelArrayList.size(); i++) {
-            System.out.println("Outcoming call of " + callAppModelArrayList.get(i).getOutcoming());
+            System.out.println("Outcoming call of " +callAppModelArrayList.get(i).getName() + " | " +
+                    callAppModelArrayList.get(i).getOutcoming());
         }
 
     }
@@ -217,7 +218,7 @@ public class CallAppArrayList {
     private void perticularUserMissCall() {
         int index;
         for (int i = 0; i < callAppModelArrayList.size(); i++) {
-            System.out.println(i + 1 + "." + callAppModelArrayList.get(i).getName());
+            System.out.println(i + "." + callAppModelArrayList.get(i).getName());
         }
         System.out.println("Enter the Index: ");
         index = s.nextInt();

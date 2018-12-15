@@ -8,18 +8,19 @@ import java.util.Scanner;
  * Created by Anukul-PC on 24-07-2018.
  */
 public class CategoryProductHashmapList {
+
     String category;
     private Scanner getInput;
     private ArrayList<CategoryModel> categoryModelArrayList;
     private ArrayList<ProductModel> productModelArrayList;
-    private HashMap<String, ArrayList<CategoryModel>> stringCategoryArrayListHashMap;
-    private HashMap<String, ArrayList<ProductModel>> stringProductArrayListHashMap;
+    //    private HashMap<String, ArrayList<CategoryModel>> stringCategoryArrayListHashMap;
+    private HashMap<String, ProductModel> stringProductArrayListHashMap;
 
-    CategoryProductHashmapList(){
+    CategoryProductHashmapList() {
         getInput = new Scanner(System.in);
         categoryModelArrayList = new ArrayList<>();
         productModelArrayList = new ArrayList<>();
-        stringCategoryArrayListHashMap = new HashMap<>();
+//        stringCategoryArrayListHashMap = new HashMap<>();
         stringProductArrayListHashMap = new HashMap<>();
         choice();
     }
@@ -33,13 +34,13 @@ public class CategoryProductHashmapList {
         System.out.println("choose your choice");
         choice = getInput.nextInt();
 
-        switch (choice){
+        switch (choice) {
             case 1:
                 addcategory();
                 choice();
                 break;
             case 2:
-               addProduct();
+                addProduct();
                 choice();
                 break;
             case 3:
@@ -49,7 +50,7 @@ public class CategoryProductHashmapList {
                 choice();
                 break;
         }
-        
+
     }
 
     private void addProduct() {
@@ -57,7 +58,7 @@ public class CategoryProductHashmapList {
 
         System.out.println("");
 
-        for(CategoryModel categoryModel : categoryModelArrayList){
+        for (CategoryModel categoryModel : categoryModelArrayList) {
             System.out.println(categoryModelArrayList.indexOf(categoryModel) + "." + categoryModel.getCategoryName());
         }
         System.out.println("Enter the categoryID or index");
@@ -78,15 +79,18 @@ public class CategoryProductHashmapList {
         System.out.println("Enter the ProductPrice");
         productPrice = getInput.nextInt();
 
-        productModelArrayList.add(new ProductModel(productName,productPrice,categoryID));
+        stringProductArrayListHashMap.put(categoryModelArrayList.get(categoryID).getCategoryName(), new ProductModel(productName, productPrice, categoryID));
+
+//        productModelArrayList.add(new ProductModel(productName, productPrice, categoryID));
+
+        System.out.println(stringProductArrayListHashMap.get(categoryModelArrayList.get(categoryID).getCategoryName()).getProductName());
 
         System.out.println("Press Y for add product or N for no");
         choice = getInput.next();
 
-        if(choice.equals("Y")){
+        if (choice.equals("Y")) {
             addProductItem(categoryID);
-        }
-        else{
+        } else {
             choice();
         }
     }
@@ -109,14 +113,13 @@ public class CategoryProductHashmapList {
         System.out.println("Press Y for add category or N for no");
         choice = getInput.next();
 
-        if(choice.equals("Y")){
+        if (choice.equals("Y")) {
             System.out.println("Enter the category");
             categoryName = getInput.next();
             categoryModelArrayList.add(new CategoryModel(categoryName));
             addMoreCategory();
-        }
-        else{
+        } else {
             choice();
         }
-    }   
+    }
 }

@@ -72,16 +72,16 @@ public class ArrayOperationUsingSwitch {
         insertelement = s.nextInt();
         System.out.println(a.length);
 
-//        for (int i = (arraysize - 1); i >= (arrayposition - 1); i--) {
-//            a[i + 1] = a[i];
-//        }
-//        a[arrayposition - 1] = insertelement;
-//
-//        System.out.println("After inserting:");
-//        for (int i = 0; i < arraysize; i++) {
-//            System.out.println(a[i] + ",");
-//        }
-//        System.out.println(a[arraysize]);
+      /*  for (int i = (arraysize - 1); i >= (arrayposition - 1); i--) {
+            a[i + 1] = a[i];
+        }
+        a[arrayposition - 1] = insertelement;
+
+        System.out.println("After inserting:");
+        for (int i = 0; i < arraysize; i++) {
+            System.out.println(a[i] + ",");
+        }
+        System.out.println(a[arraysize]);*/
     }
 
     public void delete() {
