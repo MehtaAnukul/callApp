@@ -27,10 +27,10 @@ public class ArrayOperationUsingSwitch {
         System.out.println("Enter the size of the array:");
         arraysize = s.nextInt();
 
-        a = new int[arraysize];
+        a = new int[arraysize+1];
         //  int a[] = new int[arraysize];
         System.out.println("Enter the element in array:");
-        for (int i = 0; i < a.length; i++) {
+        for (int i = 0; i < arraysize; i++) {
             a[i] = s.nextInt();
         }
 
@@ -72,7 +72,7 @@ public class ArrayOperationUsingSwitch {
         insertelement = s.nextInt();
         System.out.println(a.length);
 
-      /*  for (int i = (arraysize - 1); i >= (arrayposition - 1); i--) {
+        for (int i = (arraysize - 1); i >= (arrayposition - 1); i--) {
             a[i + 1] = a[i];
         }
         a[arrayposition - 1] = insertelement;
@@ -81,7 +81,7 @@ public class ArrayOperationUsingSwitch {
         for (int i = 0; i < arraysize; i++) {
             System.out.println(a[i] + ",");
         }
-        System.out.println(a[arraysize]);*/
+        System.out.println(a[arraysize]);
     }
 
     public void delete() {
